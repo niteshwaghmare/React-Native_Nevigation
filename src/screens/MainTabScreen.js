@@ -32,7 +32,7 @@ function MainTabScreen() {
       />
       <Tab.Screen
         name="Explore"
-        component={ExploreScreen}
+        component={ExploreStackScreen}
         options={{
           tabBarLabel: "Explore",
           tabBarColor: "#B6DF82",
@@ -43,7 +43,7 @@ function MainTabScreen() {
       />
       <Tab.Screen
         name="Detail"
-        component={DetailScreen}
+        component={DetailStackScreen}
         options={{
           tabBarLabel: "Detail",
           tabBarColor: "#CAA6DB",
@@ -54,7 +54,7 @@ function MainTabScreen() {
       />
       <Tab.Screen
         name="Profile"
-        component={ProfileScreen}
+        component={ProfileStackScreen}
         options={{
           tabBarLabel: "Profile",
           tabBarColor: "#A8EAD5",
@@ -71,6 +71,8 @@ export default MainTabScreen;
 
 const HomeStack = createStackNavigator();
 const DetailStack = createStackNavigator();
+const ExploreStack = createStackNavigator();
+const ProfileStack = createStackNavigator();
 
 const HomeStackScreen = ({ navigation }) => (
   <HomeStack.Navigator
@@ -121,4 +123,54 @@ const DetailStackScreen = ({ navigation }) => (
       }}
     />
   </DetailStack.Navigator>
+);
+
+const ExploreStackScreen = ({ navigation }) => (
+  <ExploreStack.Navigator
+    screenOptions={{
+      headerStyle: {
+        backgroundColor: "#E44652",
+      },
+    }}
+  >
+    <ExploreStack.Screen
+      name="Explore"
+      component={ExploreScreen}
+      options={{
+        headerLeft: () => (
+          <Icon.Button
+            name="ios-menu"
+            size={25}
+            backgroundColor="#E44652"
+            onPress={() => navigation.openDrawer()}
+          ></Icon.Button>
+        ),
+      }}
+    />
+  </ExploreStack.Navigator>
+);
+
+const ProfileStackScreen = ({ navigation }) => (
+  <ProfileStack.Navigator
+    screenOptions={{
+      headerStyle: {
+        backgroundColor: "#E44652",
+      },
+    }}
+  >
+    <ProfileStack.Screen
+      name="Profile"
+      component={ProfileScreen}
+      options={{
+        headerLeft: () => (
+          <Icon.Button
+            name="ios-menu"
+            size={25}
+            backgroundColor="#E44652"
+            onPress={() => navigation.openDrawer()}
+          ></Icon.Button>
+        ),
+      }}
+    />
+  </ProfileStack.Navigator>
 );
